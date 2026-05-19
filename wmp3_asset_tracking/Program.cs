@@ -22,7 +22,7 @@ Console.WriteLine("-------------------------------------------------------------
 Console.WriteLine($"{"Type",-15}{"Brand",-15}{"Model",-16}{"Purchase Date"}\t{"Status"}");
 Console.WriteLine("-------------------------------------------------------------------------------------");
 
-foreach (var asset in assets)
+foreach (var asset in sortedList)
 {
     // Check Expiry date
     DateTime expiryDate = asset.PurchaseDate.AddYears(3);
