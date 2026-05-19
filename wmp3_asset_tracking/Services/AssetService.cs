@@ -51,7 +51,10 @@ namespace wmp3_asset_tracking.Services
                     status = "YELLOW";
                 }
 
-                decimal localPrice = _asset.PriceUSD * CurrencyService.GetExchangeRate(_asset.Office);
+                // decimal localPrice = _asset.PriceUSD * CurrencyService.GetExchangeRate(_asset.Office);
+
+                decimal localPrice = CurrencyService.GetConvertedPrice(_asset.PriceUSD, _asset.Office);
+
                 string currency = CurrencyService.GetCurrency(_asset.Office);
                 string priceDisplay = $"{localPrice:F0} {currency}";
 

@@ -1,15 +1,6 @@
 [
   {
     "$type": "computer",
-    "Id": 1001,
-    "Brand": "Dell",
-    "Model": "Laptop 200",
-    "PurchaseDate": "2019-09-01T00:00:00",
-    "PriceUSD": 2000,
-    "Office": 0
-  },
-  {
-    "$type": "computer",
     "Id": 1002,
     "Brand": "Dell",
     "Model": "Laptop 204",
@@ -33,6 +24,33 @@
     "Model": "s5",
     "PurchaseDate": "2023-11-01T00:00:00",
     "PriceUSD": 400,
+    "Office": 0
+  },
+  {
+    "$type": "computer",
+    "Id": 1005,
+    "Brand": "Apple",
+    "Model": "Mac",
+    "PurchaseDate": "2025-01-08T00:00:00",
+    "PriceUSD": 500000000,
+    "Office": 1
+  },
+  {
+    "$type": "phone",
+    "Id": 1006,
+    "Brand": "Google",
+    "Model": "Pixel 5a",
+    "PurchaseDate": "2023-06-06T00:00:00",
+    "PriceUSD": 405,
+    "Office": 2
+  },
+  {
+    "$type": "computer",
+    "Id": 1007,
+    "Brand": "Dell",
+    "Model": "Laptop 200",
+    "PurchaseDate": "2025-01-04T00:00:00",
+    "PriceUSD": 800,
     "Office": 0
   }
 ]
