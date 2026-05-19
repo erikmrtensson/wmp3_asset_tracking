@@ -1,0 +1,20 @@
+[
+  {
+    "$type": "computer",
+    "Id": 1001,
+    "Brand": "Dell",
+    "Model": "Laptop 200",
+    "PurchaseDate": "2023-06-11T00:00:00",
+    "PriceUSD": 650,
+    "Office": "Turkey"
+  },
+  {
+    "$type": "phone",
+    "Id": 1002,
+    "Brand": "Samsung",
+    "Model": "a24",
+    "PurchaseDate": "2024-04-04T00:00:00",
+    "PriceUSD": 1200,
+    "Office": "USA"
+  }
+]

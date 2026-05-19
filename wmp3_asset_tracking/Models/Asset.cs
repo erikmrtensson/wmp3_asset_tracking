@@ -1,15 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace wmp3_asset_tracking.Models
 {
+    [JsonDerivedType(typeof(Computer), typeDiscriminator: "computer")]
+    [JsonDerivedType(typeof(MobilePhone), typeDiscriminator: "phone")]
+
     internal abstract class Asset
     {
         private static int _nextId = 1001;
         protected Asset(string brand, string model, DateTime purchaseDate, decimal priceUSD, string office)
         {
             Id = _nextId++;
+            Brand = brand;
+            Model = model;
+            PurchaseDate = purchaseDate;
+            PriceUSD = priceUSD;
+            Office = office;
+        }
+
+        [JsonConstructor] // Used for loading
+        protected Asset(int id, string brand, string model, DateTime purchaseDate, decimal priceUSD, string office)
+        {
+            Id = id;
             Brand = brand;
             Model = model;
             PurchaseDate = purchaseDate;
@@ -46,6 +61,11 @@ namespace wmp3_asset_tracking.Models
             }
 
             return $"{years}y {months}m {days}d";
+        }
+
+        public static void SetNextId(int id)
+        {
+            _nextId = id;
         }
 
     }
