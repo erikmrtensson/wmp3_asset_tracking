@@ -1,7 +1,11 @@
-﻿Console.WriteLine("Hello, World!");
+﻿using wmp3_asset_tracking.Models;
+using wmp3_asset_tracking.Services;
+
+Console.WriteLine("Hello, World!");
 
 
 List<Asset> assets = new List<Asset>();
+AssetService service = new AssetService(assets);
 
 assets.Add(new Computer("Dell", "XPS 13", new DateTime(2023, 5, 20), 1300, "Sweden"));
 assets.Add(new Computer("Apple", "MacBook Pro", new DateTime(2024, 3, 15), 1500, "Sweden"));
@@ -16,121 +20,56 @@ assets.Add(new MobilePhone("Samsung", "Galaxy S23", new DateTime(2025, 1, 10), 8
 assets.Add(new Computer("Dell", "XPS 13", new DateTime(2023, 5, 20), 1300, "Turkey"));
 assets.Add(new MobilePhone("Samsung", "Galaxy S23", new DateTime(2025, 1, 10), 800, "Turkey"));
 
-// SORT LIST FIRST BY TYPE THEN BY PURCHASE DATE
-List<Asset> sortedList = assets.OrderBy(a => a.Office).ThenBy(a => a.PurchaseDate).ToList();
 
 
-Console.WriteLine("ASSET LIST");
-Console.WriteLine("------------------------------------------------------------------------------------------------------------");
-Console.WriteLine($"{"Office",-14}{"Type",-15}{"Brand",-15}{"Model",-16}{"Price",-16}{"Purchase Date"}\t{"Status"}");
-Console.WriteLine("------------------------------------------------------------------------------------------------------------");
-
-foreach (var asset in sortedList)
+while (true)
 {
+    Console.WriteLine("==================================================");
+    Console.WriteLine("         COMPANY ASSET TRACKING SYSTEM           ");
+    Console.WriteLine("==================================================");
+    Console.WriteLine("1. Add Asset");
+    Console.WriteLine("2. View Assets");
+    Console.WriteLine("3. Search Assets");
+    Console.WriteLine("4. Remove Asset");
+    Console.WriteLine("5. Exit");
+    Console.Write("\nSelect option: ");
 
-    // Check Expiry date
-    DateTime expiryDate = asset.PurchaseDate.AddYears(3);
-    TimeSpan timeLeft = expiryDate - DateTime.Today;
+    string choice = Console.ReadLine() ?? "";
+    Console.WriteLine();
 
-    string status = "";
-    ConsoleColor color = ConsoleColor.White;
-
-    if (timeLeft.Days < 90)
+    switch (choice)
     {
-        color = ConsoleColor.Red;
-        status = "RED";
-    }
-    else if (timeLeft.Days < 180)
-    {
-        color = ConsoleColor.Yellow;
-        status = "YELLOW";
-    }
-
-    decimal localPrice = asset.PriceUSD * CurrencyService.GetExchangeRate(asset.Office);
-    string currency = CurrencyService.GetCurrency(asset.Office);
-    string priceDisplay = $"{localPrice:F0} {currency}";
-
-    Console.ForegroundColor = color;
-    Console.WriteLine($"{asset.Office,-14}{asset.GetAssetType(),-15}{asset.Brand,-15}{asset.Model,-16}{priceDisplay,-16}{asset.PurchaseDate:yyyy-MM-dd}\t\t{status}");
-    Console.ResetColor();
-}
-
-abstract class Asset
-{
-    protected Asset(string brand, string model, DateTime purchaseDate, decimal priceUSD, string office)
-    {
-        Brand = brand;
-        Model = model;
-        PurchaseDate = purchaseDate;
-        PriceUSD = priceUSD;
-        Office = office;
-    }
-
-    public string Brand { get; set; }
-    public string Model { get; set; }
-    public DateTime PurchaseDate { get; set; }
-    public decimal PriceUSD { get; set; }
-    public string Office { get; set; }
-
-    public abstract string GetAssetType();
-
-
-}
-
-class Computer : Asset
-{
-    public Computer(string brand, string model, DateTime purchaseDate, decimal priceUSD, string office)
-        : base(brand, model, purchaseDate, priceUSD, office)
-    {
-    }
-    public override string GetAssetType()
-    {
-        return "Computer";
-    }
-}
-
-class MobilePhone : Asset
-{
-    public MobilePhone(string brand, string model, DateTime purchaseDate, decimal priceUSD, string office)
-        : base(brand, model, purchaseDate, priceUSD, office)
-    {
-    }
-    public override string GetAssetType()
-    {
-        return "Mobile Phone";
-    }
-
-}
-
-class CurrencyService()
-{
-    public static decimal GetExchangeRate(string office)
-    {
-        switch (office)
-        {
-            case "Sweden":
-                return 10.0m; // 1 USD = 10 SEK
-            case "USA":
-                return 1.0m; // 1 USD = 1 USD
-            case "Turkey":
-                return 32.0m;
-            default:
-                return 1.0m; // Default to 1:1 if office is unknown
-        }
-    }
-
-    public static string GetCurrency(string office)
-    {
-        switch (office)
-        {
-            case "Sweden":
-                return "SEK"; // 1 USD = 10 SEK
-            case "USA":
-                return "USD"; // 1 USD = 1 USD
-            case "Turkey":
-                return "TRY";
-            default:
-                return "USD"; // Default to 1:1 if office is unknown
-        }
+        case "1":
+            {
+                service.AddAsset(assets);
+                break;
+            }
+        case "2":
+            {
+                service.ShowAssets(assets);
+                break;
+            }
+        case "3":
+            {
+                service.SearchAssets(assets);
+                break;
+            }
+        case "4":
+            {
+                service.RemoveAsset(assets);
+                break;
+            }
+        case "5":
+            {
+                Console.WriteLine("Exiting...");
+                return;
+            }
+        default:
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid option. Please try again.");
+                Console.ResetColor();
+                break;
+            }
     }
 }
