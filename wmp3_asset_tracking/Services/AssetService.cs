@@ -112,26 +112,32 @@ namespace wmp3_asset_tracking.Services
                 return;
             }
 
-            Console.Write("Office (Sweden/USA/Turkey): ");
-            string office = Console.ReadLine()?.Trim().ToLower() ?? "";
+            // Clearer Enum Selection Menu
+            Console.WriteLine("Office: (1) Sweden  (2) USA  (3) Turkey");
+            Console.Write("Select: ");
+            string officeChoice = Console.ReadLine()?.Trim() ?? "";
 
-            if (office != "sweden" && office != "usa" && office != "turkey")
+            OfficeLocation office;
+
+            if (officeChoice == "1")
             {
-                PrintError("Invalid office.");
-                return;
+                office = OfficeLocation.Sweden;
             }
-
-            // Capitalize letters for proper display
-            if (office == "usa")
+            else if (officeChoice == "2")
             {
-                office = "USA";
+                office = OfficeLocation.USA;
+            }
+            else if (officeChoice == "3")
+            {
+                office = OfficeLocation.Turkey;
             }
             else
             {
-                office = char.ToUpper(office[0]) + office.Substring(1);
+                PrintError("Invalid office selection.");
+                return;
             }
 
-            // Create asset based on type
+            
             if (type == "1")
             {
                 _assets.Add(new Computer(brand, model, purchaseDate, price, office));
@@ -143,7 +149,7 @@ namespace wmp3_asset_tracking.Services
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Asset added successfully!");
-            Console.WriteLine("Saving changes to asset.json\n");
+            Console.WriteLine("Saving changes to assets.json\n");
             SaveAssets();
             Console.ResetColor();
         }

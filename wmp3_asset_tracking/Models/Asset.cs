@@ -5,13 +5,22 @@ using System.Text.Json.Serialization;
 
 namespace wmp3_asset_tracking.Models
 {
+    internal enum OfficeLocation
+    {
+        Sweden,
+        USA,
+        Turkey
+    }
+
     [JsonDerivedType(typeof(Computer), typeDiscriminator: "computer")]
     [JsonDerivedType(typeof(MobilePhone), typeDiscriminator: "phone")]
 
     internal abstract class Asset
     {
         private static int _nextId = 1001;
-        protected Asset(string brand, string model, DateTime purchaseDate, decimal priceUSD, string office)
+
+        // Constructor for creating new assets
+        protected Asset(string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office)
         {
             Id = _nextId++;
             Brand = brand;
@@ -22,7 +31,7 @@ namespace wmp3_asset_tracking.Models
         }
 
         [JsonConstructor] // Used for loading
-        protected Asset(int id, string brand, string model, DateTime purchaseDate, decimal priceUSD, string office)
+        protected Asset(int id, string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office)
         {
             Id = id;
             Brand = brand;
@@ -37,7 +46,7 @@ namespace wmp3_asset_tracking.Models
         public string Model { get; set; }
         public DateTime PurchaseDate { get; set; }
         public decimal PriceUSD { get; set; }
-        public string Office { get; set; }
+        public OfficeLocation Office { get; set; }
 
         public abstract string GetAssetType();
 

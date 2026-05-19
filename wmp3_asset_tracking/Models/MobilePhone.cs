@@ -6,7 +6,7 @@ namespace wmp3_asset_tracking.Models
 {
     internal class MobilePhone : Asset
     {
-        public MobilePhone(string brand, string model, DateTime purchaseDate, decimal priceUSD, string office)
+        public MobilePhone(string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office)
     : base(brand, model, purchaseDate, priceUSD, office)
         {
         }

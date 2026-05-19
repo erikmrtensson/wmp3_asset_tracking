@@ -4,17 +4,35 @@
     "Id": 1001,
     "Brand": "Dell",
     "Model": "Laptop 200",
-    "PurchaseDate": "2023-06-11T00:00:00",
-    "PriceUSD": 650,
-    "Office": "Turkey"
+    "PurchaseDate": "2019-09-01T00:00:00",
+    "PriceUSD": 2000,
+    "Office": 0
+  },
+  {
+    "$type": "computer",
+    "Id": 1002,
+    "Brand": "Dell",
+    "Model": "Laptop 204",
+    "PurchaseDate": "2024-04-04T00:00:00",
+    "PriceUSD": 4000,
+    "Office": 2
   },
   {
     "$type": "phone",
-    "Id": 1002,
+    "Id": 1003,
     "Brand": "Samsung",
-    "Model": "a24",
-    "PurchaseDate": "2024-04-04T00:00:00",
-    "PriceUSD": 1200,
-    "Office": "USA"
+    "Model": "A234",
+    "PurchaseDate": "2024-01-01T00:00:00",
+    "PriceUSD": 4000,
+    "Office": 1
+  },
+  {
+    "$type": "phone",
+    "Id": 1004,
+    "Brand": "iPhone",
+    "Model": "s5",
+    "PurchaseDate": "2023-11-01T00:00:00",
+    "PriceUSD": 400,
+    "Office": 0
   }
 ]

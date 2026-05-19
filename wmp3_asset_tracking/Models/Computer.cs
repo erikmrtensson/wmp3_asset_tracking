@@ -6,7 +6,7 @@ namespace wmp3_asset_tracking.Models
 {
     internal class Computer : Asset
     {
-        public Computer(string brand, string model, DateTime purchaseDate, decimal priceUSD, string office)
+        public Computer(string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office)
     : base(brand, model, purchaseDate, priceUSD, office)
         {
         }
