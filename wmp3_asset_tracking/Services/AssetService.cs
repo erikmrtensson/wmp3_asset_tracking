@@ -162,6 +162,12 @@ namespace wmp3_asset_tracking.Services
             Console.Write("Search by brand or model: ");
             string query = Console.ReadLine()?.Trim().ToLower() ?? "";
 
+            if (query == "")
+            {
+                PrintError("Search query cannot be empty.");
+                return;
+            }
+
             List<Asset> results = _assets
                 .Where(a => a.Brand.ToLower().Contains(query) || a.Model.ToLower().Contains(query))
                 .ToList();
