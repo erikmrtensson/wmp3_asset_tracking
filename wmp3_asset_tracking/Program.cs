@@ -1,10 +1,12 @@
-﻿using wmp3_asset_tracking.Models;
+﻿using wmp3_asset_tracking.Data;
+using wmp3_asset_tracking.Models;
 using wmp3_asset_tracking.Services;
 
 
-AssetService service = new AssetService();
+using var context = new AssetContext();
+AssetService service = new AssetService(context);
 
-service.LoadAssets();
+service.SeedDatabase();
 CurrencyService.FetchRates();
 
 while (true)
@@ -14,9 +16,12 @@ while (true)
     Console.WriteLine("==================================================");
     Console.WriteLine("1. Add Asset");
     Console.WriteLine("2. View Assets");
-    Console.WriteLine("3. Search Assets");
-    Console.WriteLine("4. Remove Asset");
-    Console.WriteLine("5. Exit");
+    Console.WriteLine("3. Search / Filter");
+    Console.WriteLine("4. Update Asset");
+    Console.WriteLine("5. Remove Asset");
+    Console.WriteLine("6. Show Report");
+    Console.WriteLine("7. Export data");
+    Console.WriteLine("8. Exit");
     Console.Write("\nSelect option: ");
 
     string choice = Console.ReadLine() ?? "";
@@ -36,15 +41,30 @@ while (true)
             }
         case "3":
             {
-                service.SearchAssets();
+                service.SearchFilterMenu();
                 break;
             }
         case "4":
             {
-                service.RemoveAsset();
+                service.UpdateAsset();
                 break;
             }
         case "5":
+            {
+                service.RemoveAsset();
+                break;
+            }
+        case "6":
+            {
+                service.ShowReport();
+                break;
+            }
+        case "7":
+            {
+                service.ExportMenu();
+                break;
+            }
+        case "8":
             {
                 Console.WriteLine("Exiting...");
                 return;

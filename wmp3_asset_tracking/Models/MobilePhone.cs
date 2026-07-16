@@ -5,22 +5,13 @@ using System.Text.Json.Serialization;
 
 namespace wmp3_asset_tracking.Models
 {
-    internal class MobilePhone : Asset
+    public class MobilePhone : Asset
     {
+        protected MobilePhone() { } // EF Core
+
         public MobilePhone(string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office)
-    : base(brand, model, purchaseDate, priceUSD, office)
-        {
-        }
+            : base(brand, model, purchaseDate, priceUSD, office) { }
 
-        [JsonConstructor]
-        public MobilePhone(int id, string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office)
-    : base(id, brand, model, purchaseDate, priceUSD, office)
-        {
-        }
-        public override string GetAssetType()
-        {
-            return "Mobile Phone";
-        }
-
+        public override string GetAssetType() => "Mobile Phone";
     }
 }

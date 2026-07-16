@@ -5,24 +5,19 @@ using System.Text.Json.Serialization;
 
 namespace wmp3_asset_tracking.Models
 {
-    internal enum OfficeLocation
+    public enum OfficeLocation
     {
         Sweden,
         USA,
         Turkey
     }
 
-    [JsonDerivedType(typeof(Computer), typeDiscriminator: "computer")]
-    [JsonDerivedType(typeof(MobilePhone), typeDiscriminator: "phone")]
-
-    internal abstract class Asset
+    public abstract class Asset
     {
-        private static int _nextId = 1001;
+        protected Asset() { }
 
-        // Constructor for creating new assets
         protected Asset(string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office)
         {
-            Id = _nextId++;
             Brand = brand;
             Model = model;
             PurchaseDate = purchaseDate;
@@ -30,20 +25,9 @@ namespace wmp3_asset_tracking.Models
             Office = office;
         }
 
-        [JsonConstructor] // Used for loading
-        protected Asset(int id, string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office)
-        {
-            Id = id;
-            Brand = brand;
-            Model = model;
-            PurchaseDate = purchaseDate;
-            PriceUSD = priceUSD;
-            Office = office;
-        }
-
-        public int Id { get; private set; }
-        public string Brand { get; set; }
-        public string Model { get; set; }
+        public int Id { get; set; }
+        public string Brand { get; set; } = string.Empty;
+        public string Model { get; set; } = string.Empty;
         public DateTime PurchaseDate { get; set; }
         public decimal PriceUSD { get; set; }
         public OfficeLocation Office { get; set; }
@@ -60,7 +44,7 @@ namespace wmp3_asset_tracking.Models
             if (days < 0)
             {
                 months--;
-                days += DateTime.DaysInMonth(today.Year, today.Month - 1);
+                days += DateTime.DaysInMonth(today.Year, today.Month == 1 ? 12 : today.Month - 1);
             }
 
             if (months < 0)
@@ -71,11 +55,5 @@ namespace wmp3_asset_tracking.Models
 
             return $"{years}y {months}m {days}d";
         }
-
-        public static void SetNextId(int id)
-        {
-            _nextId = id;
-        }
-
     }
 }

@@ -5,22 +5,13 @@ using System.Text.Json.Serialization;
 
 namespace wmp3_asset_tracking.Models
 {
-    internal class Computer : Asset
+    public class Computer : Asset
     {
+        protected Computer() { } // EF Core
+
         public Computer(string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office)
-    : base(brand, model, purchaseDate, priceUSD, office)
-        {
-        }
+            : base(brand, model, purchaseDate, priceUSD, office) { }
 
-        [JsonConstructor] // Used for loading
-        public Computer(int id, string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office)
-    : base(id, brand, model, purchaseDate, priceUSD, office)
-        {
-        }
-
-        public override string GetAssetType()
-        {
-            return "Computer";
-        }
+        public override string GetAssetType() => "Computer";
     }
 }

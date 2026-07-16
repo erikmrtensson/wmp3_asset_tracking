@@ -1,0 +1,214 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{DBF25DD6-A66C-44C0-9B04-37AC88A9A34E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>ConsoleApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>wmp_ef</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitattributes" />
+    <Content Include=".gitignore" />
+    <Content Include=".git\ms-persist.xml" />
+    <Content Include="wmp3_asset_tracking.slnx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".git\COMMIT_EDITMSG" />
+    <None Include=".git\config" />
+    <None Include=".git\description" />
+    <None Include=".git\FETCH_HEAD" />
+    <None Include=".git\HEAD" />
+    <None Include=".git\hooks\applypatch-msg.sample" />
+    <None Include=".git\hooks\commit-msg.sample" />
+    <None Include=".git\hooks\fsmonitor-watchman.sample" />
+    <None Include=".git\hooks\post-update.sample" />
+    <None Include=".git\hooks\pre-applypatch.sample" />
+    <None Include=".git\hooks\pre-commit.sample" />
+    <None Include=".git\hooks\pre-merge-commit.sample" />
+    <None Include=".git\hooks\pre-push.sample" />
+    <None Include=".git\hooks\pre-rebase.sample" />
+    <None Include=".git\hooks\pre-receive.sample" />
+    <None Include=".git\hooks\prepare-commit-msg.sample" />
+    <None Include=".git\hooks\push-to-checkout.sample" />
+    <None Include=".git\hooks\sendemail-validate.sample" />
+    <None Include=".git\hooks\update.sample" />
+    <None Include=".git\index" />
+    <None Include=".git\info\exclude" />
+    <None Include=".git\logs\HEAD" />
+    <None Include=".git\logs\refs\heads\master" />
+    <None Include=".git\logs\refs\remotes\origin\HEAD" />
+    <None Include=".git\logs\refs\remotes\origin\master" />
+    <None Include=".git\objects\04\2bbca78cd87bde7397a8c6c07781f9bcc04a9d" />
+    <None Include=".git\objects\04\61fc65741144aaade7ea6d95de0c812541cbfc" />
+    <None Include=".git\objects\11\c3d2d58c7d28af20e078405803330e3a2355f1" />
+    <None Include=".git\objects\16\64a82617c445d821e2f209e5f88d8cb8fdf612" />
+    <None Include=".git\objects\17\38a271da91ad76259182475993dab73d4b34cf" />
+    <None Include=".git\objects\1c\8ba6c0dc38cc24796983f8a2d6030092d7797b" />
+    <None Include=".git\objects\1e\944820a9164abb128dcf23ca41f63e4e1b2de2" />
+    <None Include=".git\objects\1f\f0c423042b46cb1d617b81efb715defbe8054d" />
+    <None Include=".git\objects\29\7e42f949b8a19465c3e2716a38736238734791" />
+    <None Include=".git\objects\2b\072b3e11e8102a001a92784e5a9b966f305c28" />
+    <None Include=".git\objects\2f\7b37d94570c3312805349eddf6c2de4d508a58" />
+    <None Include=".git\objects\31\3dc124f5892c39f5f0cc2b1f6b2ddfaa6a10e5" />
+    <None Include=".git\objects\37\f9ac17344e981b7ac24ddd97e72024024a483d" />
+    <None Include=".git\objects\39\d2c3ae1f8069a6ca8089c2996feb499a420f6d" />
+    <None Include=".git\objects\3b\c37972d99999e8b40efdafd4a2b78e69fa88d7" />
+    <None Include=".git\objects\3e\19e822558869ba77f4e84214b027e5e15d1f2f" />
+    <None Include=".git\objects\42\8f5b3d5a32a0929968b5c9310b5ef40160d05e" />
+    <None Include=".git\objects\45\1639f3d47274e79c47833ed89168480958b0e1" />
+    <None Include=".git\objects\4c\d088a6bb5569d1ec346aca205102e20d96b397" />
+    <None Include=".git\objects\4e\828c80c18daf26f9aacfc689a7d581f79854d8" />
+    <None Include=".git\objects\53\9568c54207c255d96ef0a4544b98ff36690dee" />
+    <None Include=".git\objects\54\8a9f0b1836db3cfb7eff103e9499c539a4a94b" />
+    <None Include=".git\objects\57\60f725180339e09b4f8d1a885648cceee5bd55" />
+    <None Include=".git\objects\57\b4980c75608e137a9d178b8448295f8b32f88f" />
+    <None Include=".git\objects\58\7f3051d9cdd5840475dc1e93579bae57afa259" />
+    <None Include=".git\objects\5d\33792d7b4e914a30b9360bf2283f8ac31eb9f4" />
+    <None Include=".git\objects\64\b5b8ac724eb15eafd1edf4c64ebd225c9e14ed" />
+    <None Include=".git\objects\68\19393dda540a69b0298952dbf9db8dff6e50f4" />
+    <None Include=".git\objects\69\c531c65dce97120947126599207a9c0069db06" />
+    <None Include=".git\objects\6a\3a80d8ebe2816c4c5800481cbdacb1cd18402d" />
+    <None Include=".git\objects\6d\dc04b5534978c440efe6220a6b18408eb7e5df" />
+    <None Include=".git\objects\6f\01b46659d2edc1cf8e342d38e6ca5b12b29fc6" />
+    <None Include=".git\objects\71\75f956b2990528399ca0bc989c44cf2e30b386" />
+    <None Include=".git\objects\74\56b4ba21cc42f21bb03f171016e672da9373c0" />
+    <None Include=".git\objects\77\2774eb3bffec31eef7ca4645db0c1bf055b86d" />
+    <None Include=".git\objects\7a\a319eb8d6cf1e081d1ac6a1662eb1630aa6ec3" />
+    <None Include=".git\objects\7a\ea813824a21148e317a4bc827033d5d7152d24" />
+    <None Include=".git\objects\7b\759155be0f16c0598a89992da1e43bbd2cc462" />
+    <None Include=".git\objects\86\462359bb36ca56dadd00c7658ea942db8dee33" />
+    <None Include=".git\objects\86\77368c1f9272843ca5f22605a1ac52efc10ba1" />
+    <None Include=".git\objects\8a\ba8ff505d50a375ab4105200c111e74d544f42" />
+    <None Include=".git\objects\8c\cf687cb683bf8a3b58a627e5cc450376c2dad1" />
+    <None Include=".git\objects\8d\03a25c026830fbb4e0b85e38235c1a417ba58e" />
+    <None Include=".git\objects\8d\388f8a4eb87546a56d42db8fe52b1551e1767c" />
+    <None Include=".git\objects\8e\6021f2efd0884f82f21d5e153bf9830fcc8f75" />
+    <None Include=".git\objects\8f\52a73ee9bab893e5b3bac2657f6805b1439a78" />
+    <None Include=".git\objects\93\064d843acf9682309809fd494b2d3038bf1fec" />
+    <None Include=".git\objects\93\a5cd19e3ff7192ba097692d692cc21c52a65cf" />
+    <None Include=".git\objects\94\91a2fda28342ab358eaf234e1afe0c07a53d62" />
+    <None Include=".git\objects\9d\e2d8bd9d510bec18505f6eb993ea72337e1c60" />
+    <None Include=".git\objects\a1\75959e9c5e108ef072ade6a0d0df6562e1e858" />
+    <None Include=".git\objects\a5\2cb9e8065e7a824033ed7c39c790b81810e6c9" />
+    <None Include=".git\objects\a6\05523632cea383bba26f48b0ded900ea10145f" />
+    <None Include=".git\objects\ab\a5414964070d68dc2bae873e740c55e8bd45d6" />
+    <None Include=".git\objects\b0\be5abb97e5d2a935656165edcb47aec885d63a" />
+    <None Include=".git\objects\b1\61640eb25456718c5b988a9174a1c5c26e6be8" />
+    <None Include=".git\objects\b1\77eece3f0341baa4ba68e79b301d131834c493" />
+    <None Include=".git\objects\b3\8253778eea2a4884e399ba39f1ba82af2803d3" />
+    <None Include=".git\objects\b9\6ad7e4ddb3e2172e3162553d22adea61a71fe4" />
+    <None Include=".git\objects\bb\f2dcbe27a14b98bbaa0590630aa281725d70da" />
+    <None Include=".git\objects\bc\6c0c74c3a28730fb6414a5e563ebac6cfffac8" />
+    <None Include=".git\objects\bf\7c3d6ad6b0c4fab1f411748932d96b443a2b5c" />
+    <None Include=".git\objects\c4\b262e37345b2a4bce8f02a6e60de96f71d4d44" />
+    <None Include=".git\objects\c6\03de37961529c4e2e60c7a5adfbfb79a661f5d" />
+    <None Include=".git\objects\d0\7b504c9a1fe22f39656e7818aaec020e9db477" />
+    <None Include=".git\objects\d7\757ba1426b4525bfcaea87cd13d480a34eb081" />
+    <None Include=".git\objects\d8\a4a429c5eb9abcdade6ce063da4064580f6b4d" />
+    <None Include=".git\objects\dd\7fd3bcf858d10995924491cc9fc98a7abb9fdf" />
+    <None Include=".git\objects\e0\25828193dd15559c9a9cc18dd2181e260df460" />
+    <None Include=".git\objects\e0\a06b93290b13e37f5a615c949bff30bf2bb5ae" />
+    <None Include=".git\objects\e5\9287d943b02cbfad6c64b32401ee33ce25171f" />
+    <None Include=".git\objects\e7\3072498df09e57a1a2e80069d691706b0d5a9a" />
+    <None Include=".git\objects\eb\b04ba721014806874aac2b5a308dfd82fb4232" />
+    <None Include=".git\objects\ed\43886219afd749c9feecf9b97433c273be92ef" />
+    <None Include=".git\objects\ed\9781c223ab97571e13f98c401aa0e9a1b55a4b" />
+    <None Include=".git\objects\f0\3d0a963e955341a2ff70f1b1d81becbd2213d8" />
+    <None Include=".git\objects\f2\95adb988633a0c56e8b0dbc76ed50497d70cc9" />
+    <None Include=".git\objects\f2\ae7e8d656671784631bfd9b44ec92408c67446" />
+    <None Include=".git\objects\fa\90c90aadf536a3ca9d79df16cd9cb0c0ecb751" />
+    <None Include=".git\objects\fb\849044b5078e1c63079638985f4bc2ac9009bc" />
+    <None Include=".git\objects\fe\bfbca95ee2bb33473966e342fda27ed0e30207" />
+    <None Include=".git\ORIG_HEAD" />
+    <None Include=".git\refs\heads\master" />
+    <None Include=".git\refs\remotes\origin\HEAD" />
+    <None Include=".git\refs\remotes\origin\master" />
+    <None Include=".vs\ProjectEvaluation\wmp3_asset_tracking.metadata.v10.bin" />
+    <None Include=".vs\ProjectEvaluation\wmp3_asset_tracking.projects.v10.bin" />
+    <None Include=".vs\ProjectEvaluation\wmp3_asset_tracking.strings.v10.bin" />
+    <None Include=".vs\wmp3_asset_tracking.slnx\DesignTimeBuild\.dtbcache.v2" />
+    <None Include=".vs\wmp3_asset_tracking.slnx\FileContentIndex\15a7152c-dc4c-4ccb-ac77-a273fa218c17.vsidx" />
+    <None Include=".vs\wmp3_asset_tracking.slnx\FileContentIndex\44bd4fdf-42de-4889-ab25-ab2a84948020.vsidx" />
+    <None Include=".vs\wmp3_asset_tracking.slnx\FileContentIndex\53f00225-c192-43bf-b236-c3118dbdae93.vsidx" />
+    <None Include=".vs\wmp3_asset_tracking.slnx\FileContentIndex\847e3460-643c-4a25-a7cb-5b8a82d95b48.vsidx" />
+    <None Include=".vs\wmp3_asset_tracking.slnx\FileContentIndex\a293fd8f-e274-4ba6-9c11-618e27ffc990.vsidx" />
+    <None Include=".vs\wmp3_asset_tracking.slnx\v18\.futdcache.v2" />
+    <None Include=".vs\wmp3_asset_tracking.slnx\v18\.suo" />
+    <None Include=".vs\wmp3_asset_tracking.slnx\v18\DocumentLayout.backup.json" />
+    <None Include=".vs\wmp3_asset_tracking.slnx\v18\DocumentLayout.json" />
+    <None Include=".vs\wmp3_asset_tracking\CopilotIndices\18.6.39577.51406\CodeChunks.db" />
+    <None Include=".vs\wmp3_asset_tracking\CopilotIndices\18.6.39577.51406\SemanticSymbols.db" />
+    <None Include="README.md" />
+    <None Include="wmp3_asset_tracking\Data\assets.json" />
+    <None Include="wmp3_asset_tracking\obj\Debug\net10.0\wmp3_asset_tracking.AssemblyInfoInputs.cache" />
+    <None Include="wmp3_asset_tracking\obj\Debug\net10.0\wmp3_asset_tracking.assets.cache" />
+    <None Include="wmp3_asset_tracking\obj\Debug\net10.0\wmp3_asset_tracking.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="wmp3_asset_tracking\obj\project.assets.json" />
+    <None Include="wmp3_asset_tracking\obj\project.nuget.cache" />
+    <None Include="wmp3_asset_tracking\obj\wmp3_asset_tracking.csproj.nuget.dgspec.json" />
+    <None Include="wmp3_asset_tracking\obj\wmp3_asset_tracking.csproj.nuget.g.props" />
+    <None Include="wmp3_asset_tracking\obj\wmp3_asset_tracking.csproj.nuget.g.targets" />
+    <None Include="wmp3_asset_tracking\wmp3_asset_tracking.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="wmp3_asset_tracking\Models\Asset.cs" />
+    <Compile Include="wmp3_asset_tracking\Models\Computer.cs" />
+    <Compile Include="wmp3_asset_tracking\Models\CurrencyObj.cs" />
+    <Compile Include="wmp3_asset_tracking\Models\MobilePhone.cs" />
+    <Compile Include="wmp3_asset_tracking\obj\Debug\net10.0\.NETCoreApp,Version=v10.0.AssemblyAttributes.cs" />
+    <Compile Include="wmp3_asset_tracking\obj\Debug\net10.0\wmp3_asset_tracking.AssemblyInfo.cs" />
+    <Compile Include="wmp3_asset_tracking\obj\Debug\net10.0\wmp3_asset_tracking.GlobalUsings.g.cs" />
+    <Compile Include="wmp3_asset_tracking\Program.cs" />
+    <Compile Include="wmp3_asset_tracking\Services\AssetService.cs" />
+    <Compile Include="wmp3_asset_tracking\Services\CurrencyService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".git\objects\info\" />
+    <Folder Include=".git\objects\pack\" />
+    <Folder Include=".git\refs\tags\" />
+    <Folder Include=".vs\wmp3_asset_tracking.slnx\copilot-chat\f63c550b\sessions\" />
+    <Folder Include=".vs\wmp_ef.slnx\v18\" />
+    <Folder Include="wmp3_asset_tracking\bin\Debug\net10.0\" />
+    <Folder Include="wmp3_asset_tracking\obj\Debug\net10.0\refint\" />
+    <Folder Include="wmp3_asset_tracking\obj\Debug\net10.0\ref\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>
