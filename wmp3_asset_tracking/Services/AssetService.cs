@@ -82,9 +82,9 @@ namespace wmp3_asset_tracking.Services
                 .ToList();
 
             Console.WriteLine("ASSET LIST");
-            Console.WriteLine(new string('-', 120));
+            Console.WriteLine(new string('-', 140));
             Console.WriteLine($"{"ID",-6}{"Type",-15}{"Brand",-12}{"Model",-16}{"Office",-10}{"Purchase Date",-16}{"Price (USD)",-14}{"Currency",-10}{"Local Price",-14}{"Serial",-16}{"Status"}");
-            Console.WriteLine(new string('-', 120));
+            Console.WriteLine(new string('-', 140));
 
             foreach (var asset in targetList)
             {
