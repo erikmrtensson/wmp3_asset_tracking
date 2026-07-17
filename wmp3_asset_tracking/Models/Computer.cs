@@ -9,8 +9,8 @@ namespace wmp3_asset_tracking.Models
     {
         protected Computer() { } // EF Core
 
-        public Computer(string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office)
-            : base(brand, model, purchaseDate, priceUSD, office) { }
+        public Computer(string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office, string serialNumber)
+            : base(brand, model, purchaseDate, priceUSD, office, serialNumber) { }
 
         public override string GetAssetType() => "Computer";
     }

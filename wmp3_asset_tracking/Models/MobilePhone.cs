@@ -9,8 +9,8 @@ namespace wmp3_asset_tracking.Models
     {
         protected MobilePhone() { } // EF Core
 
-        public MobilePhone(string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office)
-            : base(brand, model, purchaseDate, priceUSD, office) { }
+        public MobilePhone(string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office, string serialNumber)
+            : base(brand, model, purchaseDate, priceUSD, office, serialNumber) { }
 
         public override string GetAssetType() => "Mobile Phone";
     }

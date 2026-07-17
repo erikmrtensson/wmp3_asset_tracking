@@ -16,13 +16,14 @@ namespace wmp3_asset_tracking.Models
     {
         protected Asset() { }
 
-        protected Asset(string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office)
+        protected Asset(string brand, string model, DateTime purchaseDate, decimal priceUSD, OfficeLocation office, string serialNumber)
         {
             Brand = brand;
             Model = model;
             PurchaseDate = purchaseDate;
             PriceUSD = priceUSD;
             Office = office;
+            SerialNumber = serialNumber;
         }
 
         public int Id { get; set; }
@@ -31,6 +32,7 @@ namespace wmp3_asset_tracking.Models
         public DateTime PurchaseDate { get; set; }
         public decimal PriceUSD { get; set; }
         public OfficeLocation Office { get; set; }
+        public string SerialNumber { get; set; } = string.Empty;
 
         public abstract string GetAssetType();
 

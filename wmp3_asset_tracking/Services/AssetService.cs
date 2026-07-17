@@ -10,11 +10,14 @@ namespace wmp3_asset_tracking.Services
 
         private static readonly string ExportDirectory = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Exports");
 
+
+        // CONSTRUCTOR
         public AssetService(AssetContext context)
         {
             _context = context;
         }
 
+        // SEEDING
         public void SeedDatabase()
         {
             if (_context.Assets.Any())
@@ -25,33 +28,31 @@ namespace wmp3_asset_tracking.Services
             var seedAssets = new List<Asset>
             {
                 // Sweden — mix of statuses
-                new Computer("Lenovo", "ThinkPad X1", DateTime.Today.AddYears(-3).AddMonths(1), 1600m, OfficeLocation.Sweden), // RED
-                new MobilePhone("Apple", "iPhone 15", DateTime.Today.AddMonths(-6), 999m, OfficeLocation.Sweden), // NORMAL
+                new Computer("Lenovo", "ThinkPad X1", DateTime.Today.AddYears(-3).AddMonths(1), 1600m, OfficeLocation.Sweden, "SE-LEN-001"), // RED
+                new MobilePhone("Apple", "iPhone 15", DateTime.Today.AddMonths(-6), 999m, OfficeLocation.Sweden, "SE-APL-002"), // NORMAL
 
                 // USA
-                new Computer("Dell", "XPS 15", DateTime.Today.AddYears(-2).AddMonths(-9), 1800m, OfficeLocation.USA), // YELLOW
-                new MobilePhone("Samsung", "Galaxy S24", DateTime.Today.AddYears(-1), 899m, OfficeLocation.USA), // NORMAL
+                new Computer("Dell", "XPS 15", DateTime.Today.AddYears(-2).AddMonths(-9), 1800m, OfficeLocation.USA, "US-DEL-001"), // YELLOW
+                new MobilePhone("Samsung", "Galaxy S24", DateTime.Today.AddYears(-1), 899m, OfficeLocation.USA, "US-SAM-002"), // NORMAL
 
                 // Turkey
-                new Computer("Asus", "ZenBook 14", DateTime.Today.AddYears(-2).AddMonths(-6), 1100m, OfficeLocation.Turkey), // NORMAL
-                new MobilePhone("Nokia", "XR20", DateTime.Today.AddYears(-3).AddMonths(2), 450m, OfficeLocation.Turkey), // RED
+                new Computer("Asus", "ZenBook 14", DateTime.Today.AddYears(-2).AddMonths(-6), 1100m, OfficeLocation.Turkey, "TR-ASU-001"), // NORMAL
+                new MobilePhone("Nokia", "XR20", DateTime.Today.AddYears(-3).AddMonths(2), 450m, OfficeLocation.Turkey, "TR-NOK-002"), // RED
 
                 // Additional Sweden
-                new Computer("HP", "EliteBook 840", DateTime.Today.AddYears(-1).AddMonths(-2), 1400m, OfficeLocation.Sweden), // NORMAL
-                new MobilePhone("Samsung", "Galaxy A54", DateTime.Today.AddYears(-2).AddMonths(-8), 350m, OfficeLocation.Sweden), // YELLOW
-                new Computer("Lenovo", "Legion 5", DateTime.Today.AddYears(-3).AddMonths(3), 1500m, OfficeLocation.Sweden), // RED
+                new Computer("HP", "EliteBook 840", DateTime.Today.AddYears(-1).AddMonths(-2), 1400m, OfficeLocation.Sweden, "SE-HP-003"), // NORMAL
+                new MobilePhone("Samsung", "Galaxy A54", DateTime.Today.AddYears(-2).AddMonths(-8), 350m, OfficeLocation.Sweden, "SE-SAM-004"), // YELLOW
+                new Computer("Lenovo", "Legion 5", DateTime.Today.AddYears(-3).AddMonths(3), 1500m, OfficeLocation.Sweden, "SE-LEN-005"), // RED
 
                 // Additional USA
-                new MobilePhone("Apple", "iPhone 14", DateTime.Today.AddYears(-2).AddMonths(-10), 899m, OfficeLocation.USA), // YELLOW
-                new Computer("Apple", "MacBook Pro 14", DateTime.Today.AddMonths(-3), 2400m, OfficeLocation.USA), // NORMAL
-                new MobilePhone("Google", "Pixel 8", DateTime.Today.AddYears(-3).AddMonths(1), 699m, OfficeLocation.USA), // RED
-                new Computer("Dell", "Latitude 5420", DateTime.Today.AddYears(-3).AddMonths(4), 1200m, OfficeLocation.USA), // RED (expired)
+                new MobilePhone("Apple", "iPhone 14", DateTime.Today.AddYears(-2).AddMonths(-10), 899m, OfficeLocation.USA, "US-APL-003"), // YELLOW
+                new Computer("Apple", "MacBook Pro 14", DateTime.Today.AddMonths(-3), 2400m, OfficeLocation.USA, "US-APL-004"), // NORMAL
+                new Computer("Dell", "Latitude 5420", DateTime.Today.AddYears(-3).AddMonths(4), 1200m, OfficeLocation.USA, "US-DEL-005"), // RED (expired)
 
                 // Additional Turkey
-                new MobilePhone("Samsung", "Galaxy S23", DateTime.Today.AddYears(-1).AddMonths(-5), 750m, OfficeLocation.Turkey), // NORMAL
-                new Computer("Asus", "ROG Strix", DateTime.Today.AddYears(-2).AddMonths(-7), 1900m, OfficeLocation.Turkey), // YELLOW
-                new MobilePhone("Nokia", "G42", DateTime.Today.AddYears(-1).AddMonths(-1), 250m, OfficeLocation.Turkey), // NORMAL
-                new Computer("HP", "Pavilion 15", DateTime.Today.AddYears(-3).AddMonths(6), 950m, OfficeLocation.Turkey), // RED (expired)
+                new Computer("Asus", "ROG Strix", DateTime.Today.AddYears(-2).AddMonths(-7), 1900m, OfficeLocation.Turkey, "TR-ASU-003"), // YELLOW
+                new MobilePhone("Nokia", "G42", DateTime.Today.AddYears(-1).AddMonths(-1), 250m, OfficeLocation.Turkey, "TR-NOK-004"), // NORMAL
+                new Computer("HP", "Pavilion 15", DateTime.Today.AddYears(-3).AddMonths(6), 950m, OfficeLocation.Turkey, "TR-HP-005"), // RED (expired)
             };
 
             _context.Assets.AddRange(seedAssets);
@@ -62,7 +63,7 @@ namespace wmp3_asset_tracking.Services
             Console.ResetColor();
         }
 
-
+        // Function to display assets in a formatted table
         public void ShowAssets(List<Asset>? assetsToShow = null)
         {
             List<Asset> rawList = assetsToShow ?? _context.Assets.ToList();
@@ -82,7 +83,7 @@ namespace wmp3_asset_tracking.Services
 
             Console.WriteLine("ASSET LIST");
             Console.WriteLine(new string('-', 120));
-            Console.WriteLine($"{"ID",-6}{"Type",-15}{"Brand",-12}{"Model",-16}{"Office",-10}{"Purchase Date",-16}{"Price (USD)",-14}{"Currency",-10}{"Local Price",-14}{"Status"}");
+            Console.WriteLine($"{"ID",-6}{"Type",-15}{"Brand",-12}{"Model",-16}{"Office",-10}{"Purchase Date",-16}{"Price (USD)",-14}{"Currency",-10}{"Local Price",-14}{"Serial",-16}{"Status"}");
             Console.WriteLine(new string('-', 120));
 
             foreach (var asset in targetList)
@@ -112,12 +113,14 @@ namespace wmp3_asset_tracking.Services
                 string purchaseDate = asset.PurchaseDate.ToString("yyyy-MM-dd");
 
                 Console.ForegroundColor = color;
-                Console.WriteLine($"{asset.Id,-6}{asset.GetAssetType(),-15}{asset.Brand,-12}{asset.Model,-16}{asset.Office,-10}{purchaseDate,-16}{usdDisplay,-14}{currency,-10}{localDisplay,-14}{status}");
+                Console.WriteLine($"{asset.Id,-6}{asset.GetAssetType(),-15}{asset.Brand,-12}{asset.Model,-16}{asset.Office,-10}{purchaseDate,-16}{usdDisplay,-14}{currency,-10}{localDisplay,-14}{asset.SerialNumber,-16}{status}");
+
                 Console.ResetColor();
             }
             Console.WriteLine();
         }
 
+        // Function to add a new asset
         public void AddAsset()
         {
             Console.WriteLine("Asset type: (1) Computer  (2) Mobile Phone");
@@ -175,10 +178,20 @@ namespace wmp3_asset_tracking.Services
                     return;
             }
 
-            Asset newAsset = type == "1"
-                ? new Computer(brand, model, purchaseDate, price, office)
-                : new MobilePhone(brand, model, purchaseDate, price, office);
+            Console.Write("Serial Number: ");
+            string serialNumber = Console.ReadLine()?.Trim() ?? "";
+            if (string.IsNullOrWhiteSpace(serialNumber))
+            {
+                PrintError("Serial number cannot be empty.");
+                return;
+            }
 
+
+            Asset newAsset = type == "1"
+                ? new Computer(brand, model, purchaseDate, price, office, serialNumber)
+                : new MobilePhone(brand, model, purchaseDate, price, office, serialNumber);
+
+            // Add the new asset to the database
             _context.Assets.Add(newAsset);
             _context.SaveChanges(); // replaces SaveAssets() / JSON write
 
@@ -187,6 +200,7 @@ namespace wmp3_asset_tracking.Services
             Console.ResetColor();
         }
 
+        // Search for assets by brand or model
         public void SearchAssets()
         {
             Console.Write("Search by brand or model: ");
@@ -211,6 +225,7 @@ namespace wmp3_asset_tracking.Services
             ShowAssets(results);
         }
 
+        // Function to remove an asset by ID
         public void RemoveAsset()
         {
             ShowAssets();
@@ -237,6 +252,7 @@ namespace wmp3_asset_tracking.Services
             Console.ResetColor();
         }
 
+        // Function to update an existing asset by ID
         public void UpdateAsset()
         {
             ShowAssets();
@@ -291,6 +307,13 @@ namespace wmp3_asset_tracking.Services
                 asset.PriceUSD = newPrice;
             }
 
+            Console.Write($"Serial Number [{asset.SerialNumber}]: ");
+            string serialInput = Console.ReadLine()?.Trim() ?? "";
+            if (!string.IsNullOrWhiteSpace(serialInput))
+            {
+                asset.SerialNumber = serialInput;
+            }
+
             Console.Write($"Office (1=Sweden, 2=USA, 3=Turkey) [{asset.Office}]: ");
             string officeInput = Console.ReadLine()?.Trim() ?? "";
             if (!string.IsNullOrWhiteSpace(officeInput))
@@ -315,6 +338,7 @@ namespace wmp3_asset_tracking.Services
 
         // REPORTING
 
+        // Function to build the report text
         private string BuildReportText()
         {
             List<Asset> assets = _context.Assets.ToList();
@@ -371,11 +395,13 @@ namespace wmp3_asset_tracking.Services
             return sb.ToString();
         }
 
+        // Function to display the report in the console
         public void ShowReport()
         {
             Console.Write(BuildReportText());
         }
 
+        // Function to export the report to a text file
         public void ExportReport()
         {
             string reportText = BuildReportText();
@@ -391,6 +417,7 @@ namespace wmp3_asset_tracking.Services
 
         // SEARCH
 
+        // Function to search assets by office location
         public void SearchByOffice()
         {
             Console.WriteLine("Office: (1) Sweden  (2) USA  (3) Turkey");
@@ -419,6 +446,7 @@ namespace wmp3_asset_tracking.Services
             ShowAssets(results);
         }
 
+        // Function to search assets by purchase year
         public void SearchByYear()
         {
             Console.Write("Enter purchase year (yyyy): ");
@@ -443,9 +471,10 @@ namespace wmp3_asset_tracking.Services
 
         // FILTERING
 
+        // Function to filter and display expired assets (older than 3 years)
         public void FilterExpired()
         {
-            // AddYears() isn't SQL-translatable, so pull to memory first
+            // The filtering is done in memory after fetching all assets from the database.
             List<Asset> results = _context.Assets
                 .ToList()
                 .Where(a => a.PurchaseDate.AddYears(3) < DateTime.Today)
@@ -460,9 +489,9 @@ namespace wmp3_asset_tracking.Services
             ShowAssets(results);
         }
 
+        // Function to filter and display only computer assets
         public void FilterComputers()
         {
-            // OfType<T> against a TPH discriminator column DOES translate to SQL
             List<Asset> results = _context.Assets.OfType<Computer>().Cast<Asset>().ToList();
 
             if (results.Count == 0)
@@ -474,6 +503,7 @@ namespace wmp3_asset_tracking.Services
             ShowAssets(results);
         }
 
+        // Function to filter and display only mobile phone assets
         public void FilterMobile()
         {
             List<Asset> results = _context.Assets.OfType<MobilePhone>().Cast<Asset>().ToList();
@@ -489,6 +519,7 @@ namespace wmp3_asset_tracking.Services
 
         // EXPORT
 
+        // Function to export the asset list to a text file
         public void ExportToTxt()
         {
             List<Asset> assets = _context.Assets
@@ -506,7 +537,7 @@ namespace wmp3_asset_tracking.Services
 
             writer.WriteLine("ASSET LIST");
             writer.WriteLine(new string('-', 140));
-            writer.WriteLine($"{"ID",-6}{"Brand",-12}{"Model",-16}{"Office",-10}{"Purchase Date",-16}{"Price (USD)",-14}{"Currency",-10}{"Local Price",-14}{"Type",-15}{"Status"}");
+            writer.WriteLine($"{"ID",-6}{"Type",-15}{"Brand",-12}{"Model",-16}{"Office",-10}{"Purchase Date",-16}{"Price (USD)",-14}{"Currency",-10}{"Local Price",-14}{"Serial",-16}{"Status"}");
             writer.WriteLine(new string('-', 140));
 
             foreach (var asset in assets)
@@ -525,7 +556,7 @@ namespace wmp3_asset_tracking.Services
                 string localDisplay = $"{localPrice:F0}";
                 string purchaseDate = asset.PurchaseDate.ToString("yyyy-MM-dd");
 
-                writer.WriteLine($"{asset.Id,-6}{asset.Brand,-12}{asset.Model,-16}{asset.Office,-10}{purchaseDate,-16}{usdDisplay,-14}{currency,-10}{localDisplay,-14}{asset.GetAssetType(),-15}{status}");
+                writer.WriteLine($"{asset.Id,-6}{asset.GetAssetType(),-15}{asset.Brand,-12}{asset.Model,-16}{asset.Office,-10}{purchaseDate,-16}{usdDisplay,-14}{currency,-10}{localDisplay,-14}{asset.SerialNumber,-16}{status}");
             }
 
             writer.WriteLine(new string('-', 140));
@@ -535,6 +566,7 @@ namespace wmp3_asset_tracking.Services
             Console.ResetColor();
         }
 
+        // Function to export the asset list to a CSV file
         public void ExportToCsv()
         {
             List<Asset> assets = _context.Assets.ToList();
@@ -544,15 +576,16 @@ namespace wmp3_asset_tracking.Services
             string path = Path.Combine(ExportDirectory, "assets.csv");
 
             using var writer = new StreamWriter(path);
-            writer.WriteLine("Id,Type,Brand,Model,Office,PurchaseDate,PriceUSD");
+            writer.WriteLine("Id,Type,Brand,Model,Office,PurchaseDate,PriceUSD,SerialNumber");
             foreach (var a in assets)
-                writer.WriteLine($"{a.Id},{a.GetAssetType()},{a.Brand},{a.Model},{a.Office},{a.PurchaseDate:yyyy-MM-dd},{a.PriceUSD}");
-
+                writer.WriteLine($"{a.Id},{a.GetAssetType()},{a.Brand},{a.Model},{a.Office},{a.PurchaseDate:yyyy-MM-dd},{a.PriceUSD},{a.SerialNumber}");
+                
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Exported {assets.Count} assets to {path}\n");
             Console.ResetColor();
         }
 
+        // Function to export the asset list to a JSON file
         public void ExportToJson()
         {
             List<Asset> assets = _context.Assets.ToList();
@@ -569,7 +602,8 @@ namespace wmp3_asset_tracking.Services
                 a.Model,
                 Office = a.Office.ToString(),
                 PurchaseDate = a.PurchaseDate.ToString("yyyy-MM-dd"),
-                a.PriceUSD
+                a.PriceUSD,
+                a.SerialNumber
             });
 
             string json = JsonSerializer.Serialize(exportData, new JsonSerializerOptions { WriteIndented = true });
@@ -582,6 +616,7 @@ namespace wmp3_asset_tracking.Services
 
         // MENUS
 
+        // Function to display the search and filter menu
         public void SearchFilterMenu()
         {
             Console.WriteLine("1. Search by Brand/Model");
@@ -606,6 +641,7 @@ namespace wmp3_asset_tracking.Services
             }
         }
 
+        // Function to display the export menu
         public void ExportMenu()
         {
             Console.WriteLine("1. Export Asset List to TXT");
@@ -626,6 +662,7 @@ namespace wmp3_asset_tracking.Services
             }
         }
 
+        // Helper function to print error messages in red
         public void PrintError(string message)
         {
             Console.ForegroundColor = ConsoleColor.Red;
